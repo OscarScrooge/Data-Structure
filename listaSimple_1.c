@@ -60,11 +60,18 @@ Node *newNodeToHeader(float value,Node *prev){
 =======
 Node *newNode(float value,Node *previous){
    
+<<<<<<< HEAD
     Node *ptr;
     ptr = (Node*) malloc(sizeof(Node));
     ptr -> value = value;
     ptr -> next = previous;
 >>>>>>> proffesor
+=======
+    Node *newNode;
+    newNode = (Node*) malloc(sizeof(Node));
+    newNode -> value = value;
+    newNode -> next = previous;
+>>>>>>> 1a13361075db011402477b41940ca19b10a729c3
 
     return newNode;
 }
