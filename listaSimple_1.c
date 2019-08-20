@@ -43,12 +43,12 @@ void main(){
 
 }
 
-Node *newNode(float value,Node *next){
+Node *newNode(float value,Node *previous){
    
     Node *ptr;
     ptr = (Node*) malloc(sizeof(Node));
     ptr -> value = value;
-    ptr -> next = next;
+    ptr -> next = previous;
 
     return ptr;
 }
