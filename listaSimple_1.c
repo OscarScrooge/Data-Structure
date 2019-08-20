@@ -45,12 +45,12 @@ void main(){
 
 Node *newNode(float value,Node *previous){
    
-    Node *ptr;
-    ptr = (Node*) malloc(sizeof(Node));
-    ptr -> value = value;
-    ptr -> next = previous;
+    Node *newNode;
+    newNode = (Node*) malloc(sizeof(Node));
+    newNode -> value = value;
+    newNode -> next = previous;
 
-    return ptr;
+    return newNode;
 }
 
 void printList(Node *head){
