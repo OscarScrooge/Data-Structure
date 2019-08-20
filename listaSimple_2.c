@@ -66,7 +66,7 @@ Node *newNodeToFooter(float value,Node *head){
       aux = head;
       while(aux -> next !=NULL){
         aux = aux ->next;
-        printf("%f\n", aux->value);
+        
       }
       aux ->next = lastNode;
       return head;
