@@ -1,1 +1,0 @@
-listaSimple3.c
