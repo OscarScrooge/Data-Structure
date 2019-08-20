@@ -1,3 +1,10 @@
+/**
+
+ESTE PROGRAMA INICIA UNA LISTA SIMPLEMENTE ENLAZADA Y AGREGA LOS ELEMENTOS EN LA CABEZA DE LA LISTA
+
+**/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +16,7 @@ typedef struct Node{
 
 }Node;
 
-Node *newNode(float value, Node *next);
+Node *newNodeToHeader(float value, Node *next);
 
 void printList(Node *head);
 
@@ -27,9 +34,9 @@ void main(){
       scanf("%f",&value);
 
       if(head==NULL){
-         head = newNode(value,NULL);      	
+         head = newNodeToHeader(value,NULL);      	
       }else{
-         head = newNode(value,head);
+         head = newNodeToHeader(value,head);
       }
       system("clear");
       printf("\n\nDesea agregar otro numero?: si = 1, no = 0\n");
@@ -43,7 +50,7 @@ void main(){
 
 }
 
-Node *newNode(float value,Node *next){
+Node *newNodeToHeader(float value,Node *next){
    
     Node *ptr;
     ptr = (Node*) malloc(sizeof(Node));
