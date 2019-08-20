@@ -50,14 +50,14 @@ void main(){
 
 }
 
-Node *newNodeToHeader(float value,Node *next){
+Node *newNodeToHeader(float value,Node *prev){
    
-    Node *ptr;
-    ptr = (Node*) malloc(sizeof(Node));
-    ptr -> value = value;
-    ptr -> next = next;
+    Node *newNode;
+    newNode = (Node*) malloc(sizeof(Node));
+    newNode -> value = value;
+    newNode -> next = prev;
 
-    return ptr;
+    return newNode;
 }
 
 void printList(Node *head){
