@@ -19,6 +19,7 @@ typedef struct Node{
 
 Node *newNodeToHeader(float value, Node *next);
 Node* findNode(Node *head, int goal);
+Node* deleteNode(int idNode, Node* head);
 
 void printList(Node *head);
 
@@ -26,7 +27,7 @@ void printList(Node *head);
 
 void main(){
 
-    int yes=1, goal;
+    int yes=1, id;
     float value =0.0;
     Node *head = NULL;
    
@@ -50,13 +51,15 @@ void main(){
 
     printList(head);
     
-    printf("id a buscar: ");    
-    scanf("%d",&goal);
+    printf("id a eliminar: ");    
+    scanf("%d",&id);
 
-    Node *finded = findNode(head,goal);
-    printf("\n finded id = %i", finded -> id);
-    printf("finded val = %f", finded -> value);
+    // Node *finded = findNode(head,id);
+    // printf("\n finded id = %i", finded -> id);
+    // printf("finded val = %f", finded -> value);
+    head = deleteNode(id,head);
 
+    printList(head);
 
 
 }
@@ -98,3 +101,44 @@ Node* findNode(Node *head, int goal){
      return NULL;
 
 }
+
+Node* deleteNode(int idNode, Node* head){
+
+
+  Node *current, *previous;
+
+  int finded = 0;
+
+  current = head;
+  previous = NULL;
+
+  while((current != NULL) && (!finded)){
+       
+       finded = (current -> id == idNode);
+   
+       if(!finded){
+         previous = current;
+         current = current -> next;
+       }
+   }
+       if(current != NULL){
+          
+          if(current == head){
+             head = current -> next;
+          }else{
+             previous -> next = current -> next;
+          }
+          free(current);
+
+       }
+
+
+
+  return head;
+
+}
+
+
+
+
+
