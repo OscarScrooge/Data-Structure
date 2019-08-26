@@ -21,7 +21,7 @@ typedef struct Node{
 }Node;
 
 Node *newNodeToHeader(int value, Node *head);
-Node *arrangeList(Node *list);
+Node *bubbleSort(Node *list);
 
 void printList(Node *head);
 
@@ -75,7 +75,7 @@ void main(){
 
               case 2:{
                       
-                 head = arrangeList(head);
+                 head = bubbleSort(head);
                  printList(head);                 
                  break;
                     
@@ -118,7 +118,7 @@ Node *newNodeToHeader(int value,Node *prev){
     return newNode;
 }
 
-Node *arrangeList(Node *head){
+Node *bubbleSort(Node *head){
 
     Node *aux,*lower,*greatest;
     
