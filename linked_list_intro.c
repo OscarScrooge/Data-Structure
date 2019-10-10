@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct{
+typedef struct Nodo{
  int info;
  struct Nodo* next;
 }Nodo;
@@ -10,30 +10,30 @@ typedef struct{
 
 int main(){
 
-    Nodo *previous =NULL,*n1 = NULL,*p1;
-    int add,*number;
+    Nodo *begin=NULL,*end = NULL,*newNode;
+    int add=-1,number;
     
 
     while(add!=0){
 
          printf("Add oumber to list = ");
          scanf("%i",&number);
-         p1=(Nodo*) malloc(sizeof(Nodo));
-         p1->info = number;
-         p1->next = NULL;
-         if(previous == NULL){
-         	previous = p1;
-         	n1 = previous;
+         newNode=(Nodo*) malloc(sizeof(Nodo));
+         newNode->info = number;
+         newNode->next = NULL;
+         if(begin == NULL){
+         	begin = newNode;
+         	end = begin;
          }else{
-            previous->next = p1;
-            n1 = p1;
+            end->next = newNode;
+            end=newNode;           
          }
          scanf("%i",&add);
     }
 
-    while(p1!=NULL){
-    	printf("%i\n",p1->info );
-    	p1 = p1->next;
+    while(begin!=NULL){
+    	printf("%i\n",begin->info );
+    	begin = begin->next;
     }
 
 	return 0;
