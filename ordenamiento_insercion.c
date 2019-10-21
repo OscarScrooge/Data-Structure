@@ -1,10 +1,3 @@
-/**
-
-ESTE PROGRAMA INICIA UNA LISTA SIMPLEMENTE ENLAZADA Y AGREGA LOS ELEMENTOS EN LA CABEZA DE LA LISTA
-
-**/
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -15,7 +8,6 @@ ESTE PROGRAMA INICIA UNA LISTA SIMPLEMENTE ENLAZADA Y AGREGA LOS ELEMENTOS EN LA
 typedef struct Node{
 
    int value;
-   int counter;
    struct Node *next;
 
 }Node;
@@ -110,20 +102,25 @@ void main(){
 
 }
 
-Node *newNodeToHeader(int value,Node *prev){
+Node *newNodeToHeader(int value,Node *head){
    
     Node *newNode;
     newNode = (Node*) malloc(sizeof(Node));
     newNode -> value = rand()%(n-m+1)+m;
-    newNode -> next = prev;
+    newNode -> next = NULL;
 
-    if(prev == NULL){
-      newNode -> counter = 1;      
+    if(head ==NULL){
+       return newNode;
     }else{
-      newNode -> counter = (prev -> counter)+1;      
+      Node *aux = head;
+      while(aux->next != NULL){
+        aux = aux->next;
+      }
+      aux->next = newNode;
     }
 
-    return newNode;
+  
+    return head;
 }
 
 Node *ordenamientoSeleccion(Node *head){
@@ -132,7 +129,6 @@ Node *ordenamientoSeleccion(Node *head){
 
     int minor, first, position =0, r;
     
-    int n = head->counter;
   
 
     aux2 = head;
@@ -211,7 +207,6 @@ Node *ordenamientoInsercion(Node *list, int newValue){
          }else if (newValue < aux -> value && aux == list){
             
             newNode ->next = aux;
-            newNode -> counter = (aux -> counter) + 1;
             aux = newNode;
             return aux;
          }else if(newValue < aux -> value){
@@ -240,10 +235,5 @@ void printList(Node *head){
      }
 
 }
-
-
-
-
-
 
 
