@@ -1,10 +1,3 @@
-/**
-
-ESTE PROGRAMA INICIA UNA LISTA SIMPLEMENTE ENLAZADA Y AGREGA LOS ELEMENTOS EN LA CABEZA DE LA LISTA
-
-**/
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -15,7 +8,6 @@ ESTE PROGRAMA INICIA UNA LISTA SIMPLEMENTE ENLAZADA Y AGREGA LOS ELEMENTOS EN LA
 typedef struct Node{
 
    int value;
-   int counter;
    struct Node *next;
 
 }Node;
@@ -28,7 +20,7 @@ void printList(Node *head);
 const int m=0,n = 5000;
 
 
-void main(){
+int main(){
 
     int yes=1,option=-1;
     int value =-1;
@@ -48,13 +40,13 @@ void main(){
           switch(option){
   
               case 1:{
-                      // printf("Agrega numeros, presiona 0 para salir\n\n");                   
+                       
 
-                       // printf("Numero: ");                   
-                       // scanf("%d",&value);
+                      while(counter != 6){
+printf("Agrega numeros, presiona 0 para salir\n\n");                   
 
-                      while(counter != 10){
-
+                       printf("Numero: ");                   
+                       scanf("%d",&value);
                            if(head==NULL){
                              head = newNodeToHeader(value,NULL);        
                           }else{
@@ -102,28 +94,33 @@ void main(){
 
 }
 
-Node *newNodeToHeader(int value,Node *prev){
+Node *newNodeToHeader(int value,Node *head){
    
     Node *newNode;
     newNode = (Node*) malloc(sizeof(Node));
-    newNode -> value = rand()%(n-m+1)+m;
-    newNode -> next = prev;
+    //newNode -> value = rand()%(n-m+1)+m;
+    newNode -> value = value;
+    newNode -> next = NULL;
 
-    if(prev == NULL){
-      newNode -> counter = 1;      
-    }else{
-      newNode -> counter = (prev -> counter)+1;      
-    }
+   if(head == NULL){
+     return newNode;
+   }else{
+     Node *aux = head;
+     while(aux ->next !=NULL){
+       aux = aux->next;
+     }
+     aux -> next = newNode;
+   }
+ 
 
-    return newNode;
+    return head;
 }
 
 Node *bubbleSort(Node *head){
 
     Node *aux,*lower,*greatest;
     
-    int n = head->counter;
-  
+   
 
     for(int i = 0; i<n;i++){
       
@@ -155,19 +152,14 @@ Node *bubbleSort(Node *head){
 }
 
 void printList(Node *head){
-
+     
+     Node *aux;
+     aux = head;
      printf("\n\n");
-     while(head != NULL){
-           printf("%d =>", head -> value);
-           head = head -> next;
+     while(aux != NULL){
+           printf("%d =>", aux -> value);
+           aux = aux -> next;
 
      }
 
 }
-
-
-
-
-
-
-
